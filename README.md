@@ -38,6 +38,7 @@ else gets String command name
 **warnings**: 
 - if you do not specify userId AND! chatId, handler will use more efficient function.
 - "=ERRORS" array contains invalid fragments of args string.
+- object
 
 ------------
 
@@ -62,6 +63,11 @@ Example of return `commandFInder("myBot","command")` when the current command is
 As you can see, element number 1 should always contain a string of parameters.
 
 - `argsParser` - function with 1 arg - the parameters string that was separated in commandFinder. Should return array, object etc with args.
+
+------------
+
+**5.**
+listening to the text begins **asynchronously**. Therefore, in order to simulate sending a command, for example, you should wait to end of execution `command.initialization`!
 
 ### Example
 ```js

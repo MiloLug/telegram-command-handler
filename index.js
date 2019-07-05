@@ -6,7 +6,7 @@ let finders = [
 	{
 		findCommand:(botName,cName) => new RegExp(`\\/${cName}(?:@${botName}|)(?:\\s|$)(.*)`),
 		splitArgs:(argsStr) => {
-			let regex = /"(?<val>[^"]*)"|[\S^]+|(?<errors>"[^"]*)/g,
+			let regex = /"(?<val>[^"]*)"|[^"\s]+|(?<errors>"[^"]*)/g,
 				m,
 				args = [];
 				args["=ERRORS"] = [];
@@ -28,7 +28,7 @@ let finders = [
 	{
 		findCommand:(botName,cName) => new RegExp(`\\/${cName}(?:@${botName}|)(?:\\s|$)(.*)`),
 		splitArgs:(argsStr) => {
-			let regex = /(?<nameQ>\S+?)\s*?=\s*?"(?<valQ>[^"]*)"|(?<nameP>\S+?)\s*?=\s*?(?<valP>[^"\s]+)|(?<errors>\S+=|"[^"]+)/g,
+			let regex = /(?<nameQ>\S+?)\s*?=\s*?"(?<valQ>[^"]*)"|(?<nameP>\S+?)\s*?=\s*?(?<valP>[^"\s]+)|(?<errors>\S+?\s*?=|=\s*?\S+|"[^"]*)/g,
 				m,
 				args = {
 					"=ERRORS":[]
@@ -70,6 +70,7 @@ const commanders = [
 async function init(th, commander) {
 	th._bot.onText(finders[th._cParser].findCommand((await th._bot.getMe()).username, th._cName),
 		commanders[commander].bind(th));
+	return true;
 }
 
 function normNum(num) {
@@ -114,7 +115,7 @@ class Command extends EventEmitter{
 			this.description = description;
 		
 		this._bot = bot;
-		init(this, commander);	
+		this.initialization = init(this, commander);	
 	}
 	onReceive(fn) {
 		return this.on("receive",fn);	
