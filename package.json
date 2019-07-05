@@ -10,10 +10,14 @@
     "handler",
     "tgcommand",
     "parser",
-    "commandparser"
+	"commandparser",
+	"tgreply",
+	"telegram-bot",
+	"bot",
+	"node-telegram-bot-api"
   ],
   "author": "dead_pear",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "is-string": "^1.0.4"
   }

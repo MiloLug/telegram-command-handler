@@ -1,4 +1,4 @@
-#telegram-command-handler
+# telegram-command-handler
 
 `npm i telegram-command-handler`
 
@@ -9,7 +9,7 @@
 - add own command parser or choose among the ready
 - set the chatid and userid of which the command will be processed
 
-###Usage
+### Usage
 
 ------------
 
@@ -63,7 +63,7 @@ As you can see, element number 1 should always contain a string of parameters.
 
 - `argsParser` - function with 1 arg - the parameters string that was separated in commandFinder. Should return array, object etc with args.
 
-###Example
+### Example
 ```js
 const BotAPI = require('node-telegram-bot-api');
 const Command = require('telegram-command-handler');
@@ -85,5 +85,5 @@ help.on("receive", function(msg, args){
 });
 ```
 
-###Warnings
+### Warnings
 - this module uses ES6 futures!
