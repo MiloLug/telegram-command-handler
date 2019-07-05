@@ -6,7 +6,7 @@ let finders = [
 	{
 		findCommand:(botName,cName) => new RegExp(`\\/${cName}(?:@${botName}|)(?:\\s|$)(.*)`),
 		splitArgs:(argsStr) => {
-			let regex = /(?:")(?<val>[^"]*)(?:")|[\S^]+|(?<errors>"[^"]*)/g,
+			let regex = /"(?<val>[^"]*)"|[\S^]+|(?<errors>"[^"]*)/g,
 				m,
 				args = [];
 				args["=ERRORS"] = [];
@@ -28,7 +28,7 @@ let finders = [
 	{
 		findCommand:(botName,cName) => new RegExp(`\\/${cName}(?:@${botName}|)(?:\\s|$)(.*)`),
 		splitArgs:(argsStr) => {
-			let regex = /(?<nameQ>\S+?)="(?<valQ>[^"]*)"|(?<nameP>\S+?)=(?<valP>\S+)|(?<errors>\S+=|"[^"]*)/g,
+			let regex = /(?<nameQ>\S+?)\s*?=\s*?"(?<valQ>[^"]*)"|(?<nameP>\S+?)\s*?=\s*?(?<valP>[^"\s]+)|(?<errors>\S+=|"[^"]+)/g,
 				m,
 				args = {
 					"=ERRORS":[]
