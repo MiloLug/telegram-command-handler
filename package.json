@@ -1,6 +1,6 @@
 {
   "name": "telegram-command-handler",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "handle commands like as /command arg1 arg2",
   "main": "index.js",
   "scripts": {},
@@ -17,6 +17,7 @@
     "node-telegram-bot-api"
   ],
   "author": "dead_pear",
+  "homepage": "https://github.com/MiloLug/telegram-command-handler",
   "license": "MIT",
   "dependencies": {
     "is-string": "^1.0.4"
